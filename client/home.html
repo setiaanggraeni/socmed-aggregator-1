@@ -6,10 +6,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Github</title>
 </head>
@@ -37,62 +34,7 @@
         </div>
         </div>
     </div>
-
-    <script>
-        axios.get('http://localhost:3000/users/repo')
-        .then(result => {
-            data = result.data
-            data.forEach(element => {
-                $('#repositories').append(`<li>${element.name}</li>`)
-            });
-        })
-        .catch(err => {
-            console.log(err);
-        })
-        
-        function add() {
-            var x = $("#repoName").val();
-            axios.post('http://localhost:3000/users/repo/create', {
-                name: x
-            })
-            .then(newRepo => {
-                $("#message").html('Success')
-                location.reload()
-            })
-            .catch(err => {
-                console.log(err)
-            })
-        }
-
-        function search(){
-            var x = $("#repoSearch").val();
-            axios.get(`http://localhost:3000/users/repo/search?q=${x}`)
-            .then(result => {
-                data = result.data.items
-                data.forEach(element => {
-                    $('#searchResult').append(`<li>${element.name}</li>`)
-                })
-                $("#messageSearch").html('Success')
-            })
-            .catch(err => {
-                console.log(err);
-            })
-        }
-        
-    </script>
-    <script>
-        let token = localStorage.getItem('token')
-        if(token === null){
-            alert('Please login!')
-            window.location='index.html'
-        }
-    </script>
-    <script>
-    $(document).ready(function() {
-        let theName = localStorage.getItem('name')
-        $("#name").append(theName)
-    });
-    </script>
+    <script src="home.js"></script>
     <script src="login.js"></script>
 </body>
 </html>
